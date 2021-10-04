@@ -1,12 +1,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>piwo</title>
 </head>
 <body>
-    <b3>ilosc osob w rodzinie</b3>
+    <h3>ilosc osob w rodzinie</h3>
     <?php 
     if(isset($_POST['rodzina']))
     {
@@ -16,22 +14,38 @@
         <input type="submit" value="Zatwierdz"><br>
         </form>
 FORMCOUNTPERSON;
-    }
     if (!empty($_POST['person']))
     {
         echo <<< FORMAGEPERSON
-        <h3>Ilosc osob w rodzinie</h3>
-        <form>
+        <h3>Ilosc osob w rodzinie: $_POST[person]</h3>
+        <form method="GET">
 FORMAGEPERSON;
         for($i=1; $i <= $_POST['person']; $i++)
         {
-
             echo <<< FORMAGEPERSON
             <input type="number" name="person" placeholder="wiek osoby: $1"><br><br>
             </form>
 FORMAGEPERSON;
         }
-
+            echo <input type="submit" name="button" value="oblicz sredni wiek"><br<br>
+    }
+        if(isset($_GET['ButtonAvg']))
+        {
+            $ageAvg=0;
+            $countPerson=0;
+            foreach ($_GET as $key => $value)
+            {
+                echo "$key: $value<br>";
+                if ($key!="buttonAvg")
+                {
+                    $ageAvg=$AgeAvg+$value;
+                    $countPerson++;
+                }
+            }
+            echo "sredni wiek" .number_format($ageAvg/$value, 2,',',' '). "lat<hr>";
+            echo "ilosc osob:  $countPerson <br>";
+            <a href "wtf.php"> Strona startowa</a>;
+        }
     }
     ?>
     <h3>naura</h3>
